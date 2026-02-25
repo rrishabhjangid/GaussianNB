@@ -33,6 +33,8 @@ if uploaded_file is not None:
         X = df[feature_cols]
         y = df[target_col]
 
+        X = pd.get_dummies(X, drop_first=True)
+        
         # 1. Training/Testing Split
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=test_size, random_state=random_state
@@ -68,3 +70,4 @@ if uploaded_file is not None:
 
 else:
     st.info("Please upload a CSV file in the sidebar to get started!")
+
